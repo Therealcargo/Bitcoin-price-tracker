@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Current Bitcoin Price</title>
+  </head>
+  <body>
+    <h1>Current Bitcoin Price</h1>
+    <p id="bitcoin-price"></p>
+
+    <script>
+      const apiUrl = "https://api.coindesk.com/v1/bpi/currentprice.json";
+
+      // Make a request to the API to retrieve the current Bitcoin price
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const price = data.bpi.USD.rate;
+          const bitcoinPriceElement = document.getElementById("bitcoin-price");
+          bitcoinPriceElement.innerHTML = `The current Bitcoin price is $${price} USD.`;
+        })
+        .catch(error => console.log(error));
+    </script>
+  </body>
+</html>
